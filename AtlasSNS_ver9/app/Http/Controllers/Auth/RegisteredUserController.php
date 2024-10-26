@@ -23,6 +23,13 @@ class RegisteredUserController extends Controller
         return view('auth.register');
     }
 
+    public function register(Request $request)
+    {
+        $request->validate([
+            'username' => 'required|string|min:2|max:12' ,
+        ]);
+        $username = $request->input('username');
+    }
     /**
      * Handle an incoming registration request.
      *
