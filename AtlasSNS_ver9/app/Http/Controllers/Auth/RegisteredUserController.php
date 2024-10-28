@@ -30,19 +30,36 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        $request->validate([
-            'username' => 'required|string|min:2|max:12',
-            'email' => 'required|string|email|min:5|max:40|unique:users,email',
-            'password' => 'required|string|min:8|max:20|regex:/^[a-zA-Z0-9]+$/|confirmed',
+    //バリデーション
+      $request->validate([
+        'username' => 'required|string|min:2|max:12',
+        'email' => 'required|string|email|min:5|max:40|unique:users,email',
+        'password' => 'required|string|min:8|max:20|regex:/^[a-zA-Z0-9]+$/|confirmed',
+        ], [
+        'username.required' => 'ユーザー名は必須です。',
+        'username.min' => 'ユーザー名は2文字以上である必要があります。',
+        'username.max' => 'ユーザー名は12文字以内である必要があります。',
+        'email.required' => 'メールアドレスは必須です。',
+        'email.email' => '有効なメールアドレスを入力してください。',
+        'email.unique' => 'このメールアドレスは既に使用されています。',
+        'password.required' => 'パスワードは必須です。',
+        'password.min' => 'パスワードは少なくとも8文字でなければなりません。',
+        'password.max' => 'パスワードは20文字以内である必要があります。',
+        'password.regex' => 'パスワードは英数字のみで構成される必要があります。',
+        'password.confirmed' => 'パスワードが一致しません。',
         ]);
 
-        User::create([
+        //ユーザー作成
+        $user = User::create([
             'username' => $request->username,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
 
-        return redirect('added');
+        //セッションにユーザー名保存
+        session(['username' =>$user->username]);
+
+        return redirect()->route('added')->with('username', $user->username);
     }
 
     public function added(): View
