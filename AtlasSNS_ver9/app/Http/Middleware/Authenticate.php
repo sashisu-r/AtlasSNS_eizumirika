@@ -10,6 +10,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\FollowsListController;
 //use App\Http\Controllers\FollowerListController;
 
+
 Route::middleware('auth')->group(function () {
     // トップページ
     Route::get('/top', [TopPageController::class, 'index'])->name('top');
