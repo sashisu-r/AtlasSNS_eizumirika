@@ -31,5 +31,4 @@ class AuthenticatedSessionController extends Controller
 
         return redirect()->intended('top');
     }
-
 }
