@@ -28,3 +28,5 @@ Route::middleware('auth')->group(function () {
 });
 
     Route::post('/top',[PostsController::class, 'index']);
+
+    Route::post('/post', [PostController::class, 'store'])->name('post.store');
