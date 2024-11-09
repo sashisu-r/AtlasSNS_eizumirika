@@ -19,7 +19,7 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->insert([
             ['username' => '１号',
              'email' => 'aaa@l.co.jp',
-             'password' => bcrypt('abcdef'),
+             'password' => bcrypt('abcdef'), // 暗号化処理
              'bio' => '自己紹介文'],
              ['username' => '２号',
              'email' => 'bbb@lu.co.jp',
