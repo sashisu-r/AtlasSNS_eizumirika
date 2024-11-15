@@ -4,7 +4,7 @@
 
 <h2>新規ユーザー登録</h2>
 
-<!-- バリデーションエラーの表示部分 -->
+<!-- バリデーションエラーの表示部分
     @if ($errors->any())
         <div class="alert alert-danger">
             <ul>
@@ -13,7 +13,7 @@
                 @endforeach
             </ul>
         </div>
-    @endif
+    @endif -->
 
 {{ Form::label('ユーザー名') }}
 {{ Form::text('username',null,['class' => 'input']) }}

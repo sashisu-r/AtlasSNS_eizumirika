@@ -1,7 +1,7 @@
 <x-logout-layout>
-
-  <!-- 適切なURLを入力してください -->
+  <!-- 適切なURLを入力してください ルーティング -->
   {!! Form::open(['url' => '/top']) !!}
+<!-- /top を開く -->
 
   <p>AtlasSNSへようこそ</p>
 
