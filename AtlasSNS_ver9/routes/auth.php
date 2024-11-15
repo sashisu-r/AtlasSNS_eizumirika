@@ -21,7 +21,6 @@ Route::middleware('guest')->group(function () {
     Route::get('added', [RegisteredUserController::class, 'added'])->name('added'); //ルート名addedと定義 登録完了ページ
     Route::post('added', [RegisteredUserController::class, 'added']);
     Route::post('added', [RegisteredUserController::class, 'store'])->name('register.store');
-
 });
 
 Route::middleware('auth')->group(function () {
