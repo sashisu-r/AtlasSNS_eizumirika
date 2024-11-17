@@ -1,32 +1,33 @@
 <x-logout-layout>
-    <!-- 適切なURLを入力してください -->
+<!-- 適切なURLを入力してください -->
 {!! Form::open(['url' => '/added']) !!}
 
 
 <h2>新規ユーザー登録</h2>
 
-<!-- バリデーションエラーの表示部分
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif -->
-
 {{ Form::label('ユーザー名') }}
 {{ Form::text('username',null,['class' => 'input']) }}
+@error('username')
+  <span class="text-danger">{{ $message }}</span>
+@enderror
 
 {{ Form::label('メールアドレス') }}
 {{ Form::email('email',null,['class' => 'input']) }}
+@error('email')
+  <span class="text-danger">{{ $message }}</span>
+@enderror
 
 {{ Form::label('パスワード') }}
 {{ Form::text('password',null,['class' => 'input']) }}
+@error('password')
+  <span class="text-danger">{{ $message }}</span>
+@enderror
 
 {{ Form::label('パスワード確認') }}
 {{ Form::text('password_confirmation',null,['class' => 'input']) }}
+@error('password_confirmation')
+  <span class="text-danger">{{ $message }}</span>
+@enderror
 
 {{ Form::submit('登録') }}
 
