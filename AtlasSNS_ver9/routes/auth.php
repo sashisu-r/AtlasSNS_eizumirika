@@ -16,5 +16,10 @@ Route::middleware('guest')->group(function () {
 
     Route::get('added', [RegisteredUserController::class, 'added']);
     Route::post('added', [RegisteredUserController::class, 'added']);
+    Route::post('added', [RegisteredUserController::class, 'store']);
+
+
+    //Route::get('top',[])//topページに遷移するためのルーティングを設定する！
+    //Route::post('top',[])
 
 });

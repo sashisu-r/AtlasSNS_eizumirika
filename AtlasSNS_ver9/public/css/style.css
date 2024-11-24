@@ -23,15 +23,3 @@ header {
     flex: 0 0 19%;
     border-left: 1px solid #727272;
 }
-
-/* topページ投稿 */
-.user-icon {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-}
-
-.post-button img {
-    width: 100px;
-    height: auto;
-}

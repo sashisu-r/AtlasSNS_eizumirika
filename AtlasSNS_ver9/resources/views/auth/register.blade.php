@@ -1,32 +1,32 @@
 <x-logout-layout>
-<!-- 適切なURLを入力してください -->
-{!! Form::open(['url' => '/added']) !!}
-
+    <!-- 適切なURLを入力してください -->
+{!! Form::open(['url' => '/added','method' => 'POST']) !!}
+@csrf
 
 <h2>新規ユーザー登録</h2>
 
 {{ Form::label('ユーザー名') }}
-{{ Form::text('username',null,['class' => 'input']) }}
+{{ Form::text('username', null, ['class' => 'input']) }}
 @error('username')
-  <span class="text-danger">{{ $message }}</span>
+    <div class="error">{{ $message }}</div>
 @enderror
 
 {{ Form::label('メールアドレス') }}
-{{ Form::email('email',null,['class' => 'input']) }}
+{{ Form::email('email', null, ['class' => 'input']) }}
 @error('email')
-  <span class="text-danger">{{ $message }}</span>
+    <div class="error">{{ $message }}</div>
 @enderror
 
 {{ Form::label('パスワード') }}
-{{ Form::text('password',null,['class' => 'input']) }}
+{{ Form::text('password', null, ['class' => 'input']) }}
 @error('password')
-  <span class="text-danger">{{ $message }}</span>
+    <div class="error">{{ $message }}</div>
 @enderror
 
 {{ Form::label('パスワード確認') }}
-{{ Form::text('password_confirmation',null,['class' => 'input']) }}
+{{ Form::text('password_confirmation', null, ['class' => 'input']) }}
 @error('password_confirmation')
-  <span class="text-danger">{{ $message }}</span>
+    <div class="error">{{ $message }}</div>
 @enderror
 
 {{ Form::submit('登録') }}
