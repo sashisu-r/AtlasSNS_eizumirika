@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
 
-    Route::get('login', [AuthenticatedSessionController::class, 'create']);
+    Route::get('login', [AuthenticatedSessionController::class, 'create'])->name('login');
     Route::post('login', [AuthenticatedSessionController::class, 'store']);
 
     Route::get('register', [RegisteredUserController::class, 'create']);
@@ -24,13 +24,16 @@ Route::middleware('guest')->group(function () {
     Route::get('top', [PostsController::class, 'index']); //topページ表示ルーティング設定
     Route::post('top', [PostsController::class, 'index']);
 
+    Route::get('profile', [ProfileController::class, 'profile']);
+
+    Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 });
 
-Route::middleware('auth')->group(function () { //制限
-    Route::get('top', [PostsController::class, 'index']);
-    Route::get('profile', [ProfileController::class, 'profile']);
-    Route::get('search', [UsersController::class, 'index']);
-    Route::get('follow-list', [PostsController::class, 'index']);
-    Route::get('follower-list', [PostsController::class, 'index']);
-    Route::get('user/{id}', [UsersController::class, 'show']); // 相手ユーザーのプロフィールページ
+Route::middleware(['web', 'auth'])->group(function () {
+    Route::get('top', [PostsController::class, 'index'])->name('top');
+    Route::get('profile', [ProfileController::class, 'profile'])->name('profile');
+    Route::get('search', [UsersController::class, 'index'])->name('search');
+    Route::get('followlist', [PostsController::class, 'index'])->name('follow.list');
+    Route::get('followerlist', [PostsController::class, 'index'])->name('follower.list');
+    Route::get('user/{id}', [UsersController::class, 'show'])->name('user.profile');
 });

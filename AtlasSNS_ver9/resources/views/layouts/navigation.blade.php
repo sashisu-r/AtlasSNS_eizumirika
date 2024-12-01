@@ -10,9 +10,14 @@
                         メニュー <span class="arrow">V</span>
                     </button>
                     <ul class="accordion-content">
-                        <li><a href="">ホーム</a></li>
-                        <li><a href="">プロフィール編集</a></li>
-                        <li><a href="">ログアウト</a></li>
+                        <li><a href="{{ url('top') }}">ホーム</a></li>
+                        <li><a href="{{ url('profile') }}">プロフィール編集</a></li>
+                        <li>
+                            <form method="POST" action="{{ route('logout') }}" style="display: inline;">
+                                @csrf
+                                <button type="submit" style="background: none; border: none; color: blue; cursor: pointer; padding: 0;">ログアウト</button>
+                            </form>
+                        </li>
                     </ul>
                 </div>
             </div>
