@@ -33,7 +33,7 @@ Route::middleware(['web', 'auth'])->group(function () {
     Route::get('top', [PostsController::class, 'index'])->name('top');
     Route::get('profile', [ProfileController::class, 'profile'])->name('profile');
     Route::get('search', [UsersController::class, 'index'])->name('search');
-    Route::get('followlist', [PostsController::class, 'index'])->name('follow.list');
-    Route::get('followerlist', [PostsController::class, 'index'])->name('follower.list');
+    Route::get('followlist', [FollowsController::class, 'followList'])->name('follow.list');
+    Route::get('followerlist', [FollowsController::class, 'followerList'])->name('follower.list');
     Route::get('user/{id}', [UsersController::class, 'show'])->name('user.profile');
 });
