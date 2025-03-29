@@ -21,8 +21,8 @@ Route::middleware('guest')->group(function () {
     Route::post('added', [RegisteredUserController::class, 'added']);
     Route::post('added', [RegisteredUserController::class, 'store']);
 
-    Route::get('top', [PostsController::class, 'index']); //topページ表示ルーティング設定
-    Route::post('top', [PostsController::class, 'index']);
+    Route::get('index', [PostsController::class, 'index']); //topページ表示ルーティング設定
+    Route::post('index', [PostsController::class, 'index']);
 
     Route::get('profile', [ProfileController::class, 'profile']);
 
@@ -30,10 +30,11 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::middleware(['web', 'auth'])->group(function () {
-    Route::get('top', [PostsController::class, 'index'])->name('top');
+    Route::get('index', [PostsController::class, 'index'])->name('index');
     Route::get('profile', [ProfileController::class, 'profile'])->name('profile');
     Route::get('search', [UsersController::class, 'index'])->name('search');
     Route::get('followlist', [FollowsController::class, 'followList'])->name('follow.list');
     Route::get('followerlist', [FollowsController::class, 'followerList'])->name('follower.list');
     Route::get('user/{id}', [UsersController::class, 'show'])->name('user.profile');
+
 });

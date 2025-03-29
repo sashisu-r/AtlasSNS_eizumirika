@@ -1,10 +1,130 @@
 @charset "UTF-8";
 
-html{
-    height: 100%;
+html {
+    height: auto;
 }
 
-body{
+body {
     height: 100%;
-    background: #186AC9;
+    background: linear-gradient(180deg, #3FA9F5, #FFD700);
+    background-attachment: fixed;
+    /* スクロールしても背景を固定 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 75px;
+    padding-bottom: 75px;
+}
+
+header {
+    margin-bottom: 20px;
+}
+
+h1 img {
+    width: 230px;
+    /* 幅を100pxにする */
+    height: auto;
+    /* 縦横比を維持する */
+}
+
+header p {
+    font-size: 20px;
+}
+
+#container {
+    background: rgba(255, 255, 255, 0.2);
+    /* 半透明の白 */
+    padding: 30px;
+    border-radius: 15px;
+    /* 角を丸く */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    /* 軽く影をつける */
+    width: 350px;
+    /* フォームの幅を固定 */
+}
+
+.input {
+    width: 100%;
+    padding: 7px;
+    border: 2px solid #fff;
+    /* 白い枠 */
+    border-radius: 5px;
+    /* 角を少し丸く */
+    background: rgba(255, 255, 255, 0.5);
+    /* 透明感のある白 */
+}
+
+.btn {
+    background-color: red;
+    /* 赤色 */
+    color: white;
+    /* 文字色を白に */
+    border: none;
+    /* ボーダーを消す */
+    padding: 10px 20px;
+    /* 余白 */
+    font-size: 15px;
+    /* 文字サイズ */
+    border-radius: 5px;
+    /* 角丸 */
+    cursor: pointer;
+    /* クリックできるように */
+    margin-top: 15px;
+}
+
+p,
+label,
+p a,
+h2 {
+    color: white;
+}
+
+.welcome {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 20px;
+}
+
+label {
+    font-size: 15px;
+    font-weight: 100;
+    display: block;
+    text-align: left;
+    margin-top: 15px;
+}
+
+p a {
+    display: inline-block;
+    padding-top: 30px;
+    text-decoration: underline;
+}
+
+.error {
+    color: red;
+}
+
+.btn:hover {
+    background-color: red !important;
+    /* 元の色を維持 */
+    color: white !important;
+    /* 文字色を維持 */
+    border: none !important;
+    /* 枠線が変わる場合は解除 */
+    opacity: 1 !important;
+    /* 透明度が変わる場合は解除 */
+    text-decoration: none !important;
+    /* 下線を防ぐ */
+    transition: none !important;
+    /* アニメーションを無効化 */
+}
+
+p a:hover {
+    color: white !important;
+    /* 色の変化を防ぐ */
+    text-decoration: none !important;
+    /* 下線を消す */
+    transition: none !important;
+    /* ふわっと変わるのを防ぐ */
 }

@@ -1,35 +1,33 @@
 <x-logout-layout>
-    <!-- 適切なURLを入力してください -->
 {!! Form::open(['url' => '/added','method' => 'POST']) !!}
 @csrf
+<h2 class="welcome">新規ユーザー登録</h2>
 
-<h2>新規ユーザー登録</h2>
-
-{{ Form::label('ユーザー名') }}
+{{ Form::label('username' ,'ユーザー名') }}
 {{ Form::text('username', null, ['class' => 'input']) }}
 @error('username')
     <div class="error">{{ $message }}</div>
 @enderror
 
-{{ Form::label('メールアドレス') }}
+{{ Form::label('email','メールアドレス') }}
 {{ Form::email('email', null, ['class' => 'input']) }}
 @error('email')
     <div class="error">{{ $message }}</div>
 @enderror
 
-{{ Form::label('パスワード') }}
-{{ Form::text('password', null, ['class' => 'input']) }}
+{{ Form::label('password','パスワード') }}
+{{ Form::password('password',['class' => 'input']) }}
 @error('password')
     <div class="error">{{ $message }}</div>
 @enderror
 
-{{ Form::label('パスワード確認') }}
-{{ Form::text('password_confirmation', null, ['class' => 'input']) }}
+{{ Form::label('password_confirmation','パスワード確認') }}
+{{ Form::password('password_confirmation', ['class' => 'input']) }}
 @error('password_confirmation')
     <div class="error">{{ $message }}</div>
 @enderror
 
-{{ Form::submit('登録') }}
+{{ Form::submit('新規登録',['class' => 'btn']) }}
 
 <p><a href="login">ログイン画面へ戻る</a></p>
 
