@@ -57,22 +57,18 @@ header p {
 }
 
 .btn {
+    display: inline-block;
     background-color: red;
-    /* 赤色 */
     color: white;
-    /* 文字色を白に */
     border: none;
-    /* ボーダーを消す */
     padding: 10px 20px;
-    /* 余白 */
     font-size: 15px;
-    /* 文字サイズ */
     border-radius: 5px;
-    /* 角丸 */
     cursor: pointer;
-    /* クリックできるように */
     margin-top: 15px;
+    text-align: center;
 }
+
 
 p,
 label,
