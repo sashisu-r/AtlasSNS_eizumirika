@@ -28,13 +28,3 @@ Route::middleware('guest')->group(function () {
 
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 });
-
-Route::middleware(['web', 'auth'])->group(function () {
-    Route::get('index', [PostsController::class, 'index'])->name('index');
-    Route::get('profile', [ProfileController::class, 'profile'])->name('profile');
-    Route::get('search', [UsersController::class, 'index'])->name('search');
-    Route::get('followlist', [FollowsController::class, 'followList'])->name('follow.list');
-    Route::get('followerlist', [FollowsController::class, 'followerList'])->name('follower.list');
-    Route::get('user/{id}', [UsersController::class, 'show'])->name('user.profile');
-
-});

@@ -8,8 +8,8 @@
   <meta name="description" content="ページの内容を表す文章" />
   <title></title>
   <link rel="stylesheet" href="{{ asset('css/reset.css') }} ">
-  <link rel="stylesheet" href="{{ asset('css/app.css') }}">
   <link rel="stylesheet" href="{{ asset('css/style.css') }} ">
+  <link rel="stylesheet" href="{{ asset('css/app.css') }}">
   <!--スマホ,タブレット対応-->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -40,14 +40,14 @@
           <p>フォロー数</p>
           <p>〇〇名</p>
         </div>
-        <p class="btn"><a href="{{ route('follow.list') }}">フォローリスト</a></p>
+        <p>フォローリスト</p>
         <div>
           <p>フォロワー数</p>
           <p>〇〇名</p>
         </div>
-        <p class="btn"><a href="{{ route('follower.list') }}">フォロワーリスト</a></p>
+        <p>フォロワーリスト</p>
       </div>
-      <p class="btn"><a href="{{ route('search') }}">ユーザー検索</a></p>
+      <p>ユーザー検索</p>
     </div>
   </div>
   <footer>
