@@ -6,7 +6,7 @@
                     <button class="accordion-toggle">
                         <span class="arrow"></span>
                     </button>
-                    <img src="">
+                    <img src="images/icon1.png">
                 </div>
                 <ul class="accordion-menu">
                     <li><a href="">ホーム</a></li>

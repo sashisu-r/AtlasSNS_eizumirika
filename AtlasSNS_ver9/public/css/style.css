@@ -33,6 +33,7 @@ header {
     /* ←右寄せ */
     height: 100%;
     /* ←青帯いっぱい使えるように */
+    width: 30%;
 }
 
 #name_area {
@@ -46,6 +47,12 @@ header {
 #name_area p {
     margin-right: 15px;
     margin-top: 15px;
+}
+
+#name_area img {
+    width: 35px;
+    height: auto;
+    margin: 10px 15px 10px 5px;
 }
 
 .accordion-toggle {
