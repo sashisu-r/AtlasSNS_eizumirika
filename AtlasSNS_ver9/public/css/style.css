@@ -122,3 +122,51 @@ header {
     flex: 0 0 19%;
     border-left: 1px solid #727272;
 }
+
+#side-bar p {
+    margin-left: 10px;
+}
+
+.follow_member,
+.follower_member {
+    display: inline-flex;
+}
+
+.main-container {
+    padding: 20px;
+    background-color: #f5f9fc;
+    /* 好きな背景色で */
+}
+
+.post-form {
+    display: flex;
+    background: white;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+textarea {
+    flex-grow: 1;
+    border: none;
+    padding: 8px;
+    font-size: 15px;
+    resize: none;
+    width: 80%;
+    height: 100%;
+    margin-bottom: 25px;
+}
+
+.post-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.post-btn img {
+    height: 35px;
+    width: auto;
+    margin-bottom: 25px;
+}

@@ -27,4 +27,11 @@ Route::middleware('guest')->group(function () {
     Route::get('profile', [ProfileController::class, 'profile']);
 
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
+
+    Route::post('/posts/create', [PostsController::class, 'create'])->name('post.create');
+});
+
+Route::middleware('auth')->group(function () {
+    Route::get('/index', [PostsController::class, 'index'])->name('posts.index');
+    Route::post('/posts/create', [PostsController::class, 'create'])->name('post.create');
 });
