@@ -142,9 +142,8 @@ header {
     display: flex;
     background: white;
     padding: 10px;
-    margin-bottom: 20px;
-    border-radius: 6px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border-bottom: 7px solid #c0c0c0;
 }
 
 textarea {
@@ -169,4 +168,28 @@ textarea {
     height: 35px;
     width: auto;
     margin-bottom: 25px;
+}
+
+.post-item {
+    position: relative;
+    background-color: #fff;
+    border-bottom: 1px solid #d3d3d3;
+    padding: 20px 20px 10px 150px;
+}
+
+.post-item small {
+    position: absolute;
+    top: 10px;
+    /* .post-item の内側上端から */
+    right: 10px;
+    /* .post-item の内側左端から */
+    font-size: 10px;
+    color: #727272;
+}
+
+.post-item p {
+    margin: 0;
+    /* デフォルトマージンをリセット */
+    padding-top: 10px;
+    /* 日付と重ならないように調整 */
 }

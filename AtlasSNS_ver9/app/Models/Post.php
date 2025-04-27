@@ -11,7 +11,6 @@ class Post extends Model
 
     // 投稿に保存可能なフィールド
     protected $fillable = [
-        'content',
         'user_id',
         'post'
     ];

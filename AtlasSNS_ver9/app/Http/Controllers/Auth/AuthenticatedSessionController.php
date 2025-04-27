@@ -25,12 +25,16 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
-        $request->authenticate();
+    // ユーザー認証
+    $request->authenticate();
 
-        $request->session()->regenerate();
+    // セッションの再生成
+    $request->session()->regenerate();
 
-        return redirect()->intended('index');
+    // /index にリダイレクト
+    return redirect()->route('posts.index');
     }
+
 
     public function destroy(Request $request)
     {
