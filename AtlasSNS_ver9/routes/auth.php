@@ -31,4 +31,6 @@ Route::middleware('auth')->group(function () {
     // 投稿処理
     Route::post('/posts/create', [PostsController::class, 'create'])->name('post.create');
     Route::get('/profile', [ProfileController::class, 'profile']);
+    Route::delete('/posts/{post}', [PostsController::class, 'destroy'])->name('post.destroy');
+    Route::put('/posts/{post}', [PostsController::class, 'update'])->name('post.update');
 });

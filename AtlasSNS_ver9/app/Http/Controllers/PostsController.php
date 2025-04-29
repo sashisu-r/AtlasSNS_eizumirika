@@ -37,4 +37,24 @@ class PostsController extends Controller
       // 投稿後、トップページへ戻る
       return redirect()->route('posts.index');
     }
+
+    public function destroy(Post $post)
+    {
+    $post->delete();
+    return redirect()->route('posts.index')->with('success', '投稿を削除しました');
+    }
+
+    public function update(Request $request, Post $post)
+    {
+    $request->validate([
+        'post' => 'required|max:150',
+    ]);
+
+    $post->update([
+        'post' => $request->post,
+    ]);
+
+    return redirect()->route('posts.index');
+    }
+
 }
