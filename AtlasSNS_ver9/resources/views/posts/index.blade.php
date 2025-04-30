@@ -27,44 +27,41 @@
   </div>
 @endforeach
 
-<!-- 編集用モーダル -->
-<div id="editModal" class="modal" style="display:none;">
+<div id="editModal" class="modal">
   <div class="modal-content">
     <form id="editForm" method="POST" action="">
       @csrf
       @method('PUT')
       <textarea name="post" id="editPostContent" maxlength="150" required></textarea>
-      <button type="submit"><img src="{{ asset('images/edit.png') }}" alt="編集アイコン" class="edit-icon">
+      <button type="submit">
+        <img src="{{ asset('images/edit.png') }}" alt="編集アイコン" class="edit-icon">
       </button>
     </form>
   </div>
 </div>
 
 <!-- 削除モーダル -->
-<div id="deleteModal" class="modal" style="display: none;">
+<div id="deleteModal">
   <div class="modal-content">
     <p>この投稿を削除します。よろしいでしょうか？</p>
-    <div class="modal-buttons">
-      <button id="confirmBtn">OK</button>
-      <button id="cancelBtn">キャンセル</button>
-    </div>
-    <!-- Laravelのdelete用 -->
     <form id="deleteForm" method="POST">
       @csrf
       @method('DELETE')
+      <button type="submit" class="ok-btn" id="confirmBtn">OK</button>
+      <button type="button" id="cancelBtn" class="cancel-btn">キャンセル</button>
     </form>
   </div>
 </div>
 
-
 <script>
+  console.log('スクリプト読み込まれました');
+
 document.addEventListener('DOMContentLoaded', function () {
   // ===== 編集ボタン関連 =====
   const editButtons = document.querySelectorAll('.edit-btn');
   const editModal = document.getElementById('editModal');
   const editForm = document.getElementById('editForm');
   const editPostContent = document.getElementById('editPostContent');
-  const editCancelBtn = document.getElementById('editCancelBtn');
 
   // ===== 削除ボタン関連 =====
   const deleteButtons = document.querySelectorAll('.delete-btn');
@@ -117,18 +114,12 @@ document.addEventListener('DOMContentLoaded', function () {
       const postId = this.dataset.postId;
       const postContent = this.dataset.postContent;
 
-      editModal.style.display = 'block';
+      editModal.style.display = 'flex';
       editPostContent.value = postContent;
       editForm.action = '/posts/' + postId;
     });
   });
-
-  // 編集モーダルのキャンセル
-  editCancelBtn.addEventListener('click', function () {
-    editModal.style.display = 'none';
-  });
 });
 </script>
-
 
 </x-login-layout>

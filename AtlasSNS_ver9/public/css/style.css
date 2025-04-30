@@ -221,6 +221,11 @@ textarea {
     width: auto;
 }
 
+#editModal {
+    display: none;
+    /* 初期状態で非表示 */
+}
+
 #editModal .modal-content {
     position: fixed;
     top: 50%;
@@ -321,4 +326,48 @@ textarea {
     background-color: #f44336;
     /* 赤 */
     color: white;
+}
+
+/* モーダル全体の背景 */
+#deleteModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    /* 背景半透明 */
+    display: none;
+    z-index: 9999;
+}
+
+#deleteModal .modal-content {
+    top: 20px;
+    /* ← 上から少し余白を開けて配置 */
+    left: 50%;
+    transform: translateX(-50%);
+    /* Y方向の中央寄せはやめる */
+    position: fixed;
+}
+
+/* OKボタン */
+#deleteModal .ok-btn {
+    background-color: #7ea8f8;
+    /* Adobe XD画像のOKボタンの青 */
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 6px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+/* キャンセルボタン */
+#deleteModal .cancel-btn {
+    background-color: #f0f0f0;
+    color: #333;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 6px;
+    cursor: pointer;
 }
