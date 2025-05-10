@@ -4,6 +4,12 @@ html {}
 
 body {}
 
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
 header {
     background: #186AC9;
     margin-top: 30px;
@@ -112,6 +118,7 @@ header {
 #row {
     display: flex;
     flex-flow: row wrap;
+    height: 100%;
 }
 
 #container {
@@ -121,6 +128,7 @@ header {
 #side-bar {
     flex: 0 0 19%;
     border-left: 1px solid #727272;
+    height: 100%;
 }
 
 #side-bar p {
@@ -443,4 +451,59 @@ textarea {
     /* ホバー時も白 */
     text-decoration: none;
     /* 下線なし */
+}
+
+.follow-list-top {
+    display: flex;
+    padding-left: 10%;
+    padding-bottom: 3%;
+    align-items: center;
+    border-bottom: 7px solid #c0c0c0;
+    width: 100%;
+    height: auto;
+    padding-top: 20px;
+    background-color: #fff;
+}
+
+.follow-list-top h3 {
+    margin: 0;
+    line-height: 1;
+    font-size: 15px;
+    margin-right: 20px;
+}
+
+.follow-list-icon {
+    width: 30px;
+    height: auto;
+}
+
+.follow-list-all {
+    padding-top: 20px;
+    background-color: #fff;
+    height: 100%;
+}
+
+.follow-list-content {
+    display: flex;
+    height: auto;
+    padding-left: 15%;
+    padding-bottom: 10px;
+    gap: 20px;
+    border-bottom: 1px solid #c0c0c0;
+}
+
+.follow-text {
+    display: flex;
+    flex-direction: column;
+    /* ←縦並びにする */
+}
+
+.follow-text h4 {
+    font-size: 13px;
+    margin: 0;
+}
+
+.follow-text p {
+    font-size: 10px;
+    margin: 0;
 }
