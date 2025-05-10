@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\PostsController;
+use App\Http\Controllers\FollowsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
@@ -33,4 +34,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'profile']);
     Route::delete('/posts/{post}', [PostsController::class, 'destroy'])->name('post.destroy');
     Route::put('/posts/{post}', [PostsController::class, 'update'])->name('post.update');
+
+    // フォローリスト表示用ルート
+    Route::get('/followlist', [FollowsController::class, 'followList'])->name('follow.list');
+
+    // フォロワーリスト表示用ルート
+    Route::get('/followerlist', [FollowsController::class, 'followerList'])->name('follower.list');
 });

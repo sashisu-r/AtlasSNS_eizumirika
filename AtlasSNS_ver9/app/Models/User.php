@@ -33,13 +33,13 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    // フォローしているユーザー
+    // フォローしているユーザー（自分 → 相手）
     public function followings()
     {
         return $this->belongsToMany(User::class, 'follows', 'following_id', 'followed_id');
     }
 
-    // 自分をフォローしているユーザー
+    // 自分をフォローしているユーザー（相手 → 自分）
     public function followers()
     {
         return $this->belongsToMany(User::class, 'follows', 'followed_id', 'following_id');

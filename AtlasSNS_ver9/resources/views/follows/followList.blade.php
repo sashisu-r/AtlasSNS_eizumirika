@@ -5,7 +5,7 @@
 
   <ul>
     @foreach ($followings as $following)
-        <li>{{ $following->name }}</li>
+        <li>{{ $following->username }}</li>
     @endforeach
   </ul>
 
