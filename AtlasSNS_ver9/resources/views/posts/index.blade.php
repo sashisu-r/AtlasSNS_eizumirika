@@ -12,7 +12,8 @@
 
 @foreach ($posts as $post)
   <div class="post-item">
-    <p>{{ $post->post }}</p> {{-- 投稿内容表示 --}}
+    <!-- 改行設定 -->
+    <p>{!! nl2br(e($post->post)) !!}</p> {{-- 投稿内容表示 --}}
     <small>{{ $post->created_at->format('Y-m-d H:i') }}</small> {{-- 投稿日時表示 --}}
     <div class="button-area">
       <!-- 編集ボタン追加 -->

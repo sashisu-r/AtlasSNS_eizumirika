@@ -35,19 +35,34 @@
     </div>
     <div id="side-bar">
       <div id="confirm">
-        <p>〇〇さんの</p>
+        <p>◯◯さんの</p>
         <div class="follow_member">
           <p>フォロー数</p>
-          <p>〇〇名</p>
+            <p>◯◯名</p>
         </div>
-        <p>フォローリスト</p>
+
+        <!-- フォローリストボタン -->
+        <div class="btn-wrapper">
+          <a href="{{ url('/followlist') }}" class="btn-side">フォローリスト</a>
+        </div>
         <div class="follower_member">
           <p>フォロワー数</p>
-          <p>〇〇名</p>
+          <p>◯◯名</p>
         </div>
-        <p>フォロワーリスト</p>
+
+        <!-- フォロワーリストボタン -->
+        <div class="btn-wrapper">
+          <a href="{{ url('/followerlist') }}" class="btn-side">フォロワーリスト</a>
+        </div>
+
+        <!-- 区切り線 -->
+        <hr class="sidebar-separator">
+
+        <!-- ユーザー検索ボタン -->
+        <div class="search-btn">
+          <a href="{{ url('/search') }}">ユーザー検索</a>
+        </div>
       </div>
-      <p>ユーザー検索</p>
     </div>
   </div>
   <footer>

@@ -141,7 +141,7 @@ header {
 .post-form {
     display: flex;
     background: white;
-    padding: 10px;
+    padding: 10px 10px 10px 30px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     border-bottom: 7px solid #c0c0c0;
 }
@@ -175,20 +175,17 @@ textarea {
     background-color: #fff;
     border-bottom: 1px solid #d3d3d3;
     padding: 20px 20px 10px 150px;
-    margin-bottom: 10px;
     min-height: 100px;
     /* ← 最低100pxに設定 */
     height: auto;
     /* ← 内容が多ければ自動で伸びる */
-    box-sizing: border-box;
-    /* ← パディング込みでサイズを計算 */
 }
 
 .post-item small {
     position: absolute;
     top: 10px;
     /* .post-item の内側上端から */
-    right: 10px;
+    right: 30px;
     /* .post-item の内側左端から */
     font-size: 10px;
     color: #727272;
@@ -197,8 +194,9 @@ textarea {
 .post-item p {
     margin: 0;
     /* デフォルトマージンをリセット */
-    padding-top: 10px;
+    padding-top: 15px;
     /* 日付と重ならないように調整 */
+    padding-bottom: 30px;
 }
 
 .button-area {
@@ -281,6 +279,11 @@ textarea {
     object-fit: contain;
 }
 
+.trash-icon {
+    margin-right: 15px;
+    margin-left: 10px;
+}
+
 .modal {
     position: fixed;
     top: 0;
@@ -342,6 +345,8 @@ textarea {
 }
 
 #deleteModal .modal-content {
+    width: 350px;
+    height: auto;
     top: 20px;
     /* ← 上から少し余白を開けて配置 */
     left: 50%;
@@ -352,8 +357,8 @@ textarea {
 
 /* OKボタン */
 #deleteModal .ok-btn {
-    background-color: #7ea8f8;
-    /* Adobe XD画像のOKボタンの青 */
+    background-color: #f04e58;
+    /* OKボタンの色 */
     color: white;
     border: none;
     padding: 8px 20px;
@@ -370,4 +375,72 @@ textarea {
     padding: 8px 20px;
     border-radius: 6px;
     cursor: pointer;
+}
+
+#side-bar {
+    font-size: 12px;
+}
+
+#side-bar p {
+    margin-top: 20px;
+    margin-bottom: 3px;
+}
+
+.btn-wrapper {
+    text-align: right;
+}
+
+.btn-side {
+    display: inline-block;
+    background-color: #186AC9;
+    color: #fff;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 12px;
+    width: 110px;
+    padding: 5px;
+    text-align: center;
+    margin-right: 5px;
+}
+
+.btn-side:hover {
+    background-color: #426ab3;
+    /* ホバー時も通常と同じ青 */
+    color: #fff;
+    /* テキスト色も同じ */
+    text-decoration: none;
+    /* 下線が出ないように */
+}
+
+.sidebar-separator {
+    border: none;
+    border-top: 1px solid #ccc;
+    margin: 20px 0;
+    width: 100%;
+}
+
+.search-btn {
+    background-color: #186AC9;
+    color: #fff;
+    border-radius: 4px;
+    font-size: 12px;
+    width: 110px;
+    padding: 5px;
+    text-align: center;
+    margin: 20px auto 0;
+    /* 上下マージン + 中央寄せ */
+}
+
+.search-btn a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    /* ボタン全体をクリック可能に */
+}
+
+.search-btn a:hover {
+    color: #fff;
+    /* ホバー時も白 */
+    text-decoration: none;
+    /* 下線なし */
 }
