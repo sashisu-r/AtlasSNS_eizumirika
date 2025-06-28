@@ -10,7 +10,7 @@
                 </div>
                 <ul class="accordion-menu">
                     <li><a href="">ホーム</a></li>
-                    <li><a href="">プロフィール</a></li>
+                    <li><a href="{{ route('profile') }}">プロフィール編集</a></li>
                     <li><a href="">ログアウト</a></li>
                 </ul>
             </div>

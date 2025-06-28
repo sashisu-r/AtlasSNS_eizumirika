@@ -40,4 +40,11 @@ Route::middleware('auth')->group(function () {
 
     // フォロワーリスト表示用ルート
     Route::get('/followerlist', [FollowsController::class, 'followerList'])->name('follower.list');
+
+    // 検索画面
+    Route::get('/search', [UsersController::class, 'search'])->name('user.search');
+
+    // プロフィール編集画面
+    Route::get('/profile', [ProfileController::class, 'profile'])->name('profile');
+
 });
