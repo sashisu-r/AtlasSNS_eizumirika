@@ -580,3 +580,22 @@ textarea {
     vertical-align: middle;
     margin-right: 10px;
 }
+
+.form-group {
+    display: flex;
+    margin-bottom: 15px;
+    gap: 10px;
+    /* 項目名とフォームの間隔 */
+}
+
+.form-group label {
+    font-size: 10px;
+    /* ラベルの幅を固定 */
+}
+
+.form-group input,
+.form-group textarea {
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    width: 50%;
+}

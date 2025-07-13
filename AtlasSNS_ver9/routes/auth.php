@@ -47,4 +47,7 @@ Route::middleware('auth')->group(function () {
     // プロフィール編集画面
     Route::get('/profile', [ProfileController::class, 'profile'])->name('profile');
 
+    // プロフィール更新処理（ここが必要！）
+    Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
+
 });
