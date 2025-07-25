@@ -34,6 +34,11 @@
 
       <div class="form-group">
         <label>アイコン画像</label>
+        <img src="{{ asset('images/' . ($user->icon_image ?? 'icon1.png')) }}" alt="アイコン" class="user-icon">
+
+        <br>
+
+        <input type="file" name="icon_image" accept="image/*">
       </div>
 
       <button type="submit" class="update-btn">更新</button>

@@ -10,51 +10,53 @@ class PostsController extends Controller
 {
     public function __construct()
     {
-      // ログインしているユーザーのみアクセス可
-      $this->middleware('auth');
+        // ログインしているユーザーのみアクセス可
+        $this->middleware('auth');
     }
 
     public function index()
     {
-    $posts = Post::orderBy('created_at', 'desc')->get();
-    return view('posts.index', compact('posts'));
+        // 投稿とその投稿者情報（user）を一緒に取得
+        $posts = Post::with('user')->orderBy('created_at', 'desc')->get();
+
+        return view('posts.index', compact('posts'));
     }
 
     // 投稿処理用のcreateメソッド
     public function create(Request $request)
     {
-      // バリデーション
-      $request->validate([
-        'post' => 'required|max:150',
-      ]);
+        // バリデーション
+        $request->validate([
+            'post' => 'required|max:150',
+        ]);
 
-      // 投稿を保存
-      Post::create([
-        'user_id' => auth()->id(),
-        'post' => $request->post,
-      ]);
+        // 投稿を保存
+        Post::create([
+            'user_id' => auth()->id(),
+            'post' => $request->post,
+        ]);
 
-      // 投稿後、トップページへ戻る
-      return redirect()->route('posts.index');
+        // 投稿後、トップページへ戻る
+        return redirect()->route('posts.index');
     }
 
     public function destroy(Post $post)
     {
-    $post->delete();
-    return redirect()->route('posts.index')->with('success', '投稿を削除しました');
+        $post->delete();
+        return redirect()->route('posts.index')->with('success', '投稿を削除しました');
     }
 
     public function update(Request $request, Post $post)
     {
-    $request->validate([
-        'post' => 'required|max:150',
-    ]);
+        $request->validate([
+            'post' => 'required|max:150',
+        ]);
 
-    $post->update([
-        'post' => $request->post,
-    ]);
+        $post->update([
+            'post' => $request->post,
+        ]);
 
-    return redirect()->route('posts.index');
+        return redirect()->route('posts.index');
     }
 
 }

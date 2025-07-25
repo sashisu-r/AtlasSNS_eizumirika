@@ -14,4 +14,10 @@ class Post extends Model
         'user_id',
         'post'
     ];
+
+    // 投稿者とのリレーション（1つの投稿は1人のユーザーに属する）
+    public function user()
+    {
+      return $this->belongsTo(User::class);
+    }
 }

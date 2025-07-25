@@ -12,22 +12,35 @@
 
 @foreach ($posts as $post)
   <div class="post-item">
-    <!-- 改行設定 -->
-    <p>{!! nl2br(e($post->post)) !!}</p> {{-- 投稿内容表示 --}}
-    <small>{{ $post->created_at->format('Y-m-d H:i') }}</small> {{-- 投稿日時表示 --}}
+
+    {{-- 投稿者アイコンと名前（横並び） --}}
+    <div class="post-user">
+      <a href="{{ route('profile', ['id' => $post->user->id]) }}">
+        <img src="{{ asset('images/' . ($post->user->icon_image ?? 'icon1.png')) }}" alt="アイコン" class="user-icon">
+
+      </a>
+      <span class="user-name">{{ $post->user->username }}</span>
+    </div>
+
+    {{-- 投稿内容 --}}
+    <p>{!! nl2br(e($post->post)) !!}</p>
+    <small>{{ $post->created_at->format('Y-m-d H:i') }}</small>
+
+    {{-- 編集・削除ボタン --}}
     <div class="button-area">
-      <!-- 編集ボタン追加 -->
       <button type="button" class="edit-btn" data-post-id="{{ $post->id }}" data-post-content="{{ $post->post }}">
         <img src="{{ asset('images/edit.png') }}" alt="編集アイコン" class="edit-icon">
       </button>
-      <!-- ゴミ箱ボタン追加 -->
+
       <button type="button" class="delete-btn" data-post-id="{{ $post->id }}">
         <img src="{{ asset('images/trash-h.png') }}" alt="ゴミ箱アイコン" class="trash-icon">
       </button>
     </div>
+
   </div>
 @endforeach
 
+{{-- 編集モーダル --}}
 <div id="editModal" class="modal">
   <div class="modal-content">
     <form id="editForm" method="POST" action="">
@@ -41,7 +54,7 @@
   </div>
 </div>
 
-<!-- 削除モーダル -->
+{{-- 削除モーダル --}}
 <div id="deleteModal">
   <div class="modal-content">
     <p>この投稿を削除します。よろしいでしょうか？</p>
@@ -55,72 +68,53 @@
 </div>
 
 <script>
-  console.log('スクリプト読み込まれました');
+  document.addEventListener('DOMContentLoaded', function () {
+    const editButtons = document.querySelectorAll('.edit-btn');
+    const editModal = document.getElementById('editModal');
+    const editForm = document.getElementById('editForm');
+    const editPostContent = document.getElementById('editPostContent');
 
-document.addEventListener('DOMContentLoaded', function () {
-  // ===== 編集ボタン関連 =====
-  const editButtons = document.querySelectorAll('.edit-btn');
-  const editModal = document.getElementById('editModal');
-  const editForm = document.getElementById('editForm');
-  const editPostContent = document.getElementById('editPostContent');
+    const deleteButtons = document.querySelectorAll('.delete-btn');
+    const deleteModal = document.getElementById('deleteModal');
+    const deleteForm = document.getElementById('deleteForm');
+    const cancelBtn = document.getElementById('cancelBtn');
+    const confirmBtn = document.getElementById('confirmBtn');
 
-  // ===== 削除ボタン関連 =====
-  const deleteButtons = document.querySelectorAll('.delete-btn');
-  const deleteModal = document.getElementById('deleteModal');
-  const deleteForm = document.getElementById('deleteForm');
-  const cancelBtn = document.getElementById('cancelBtn');
-  const confirmBtn = document.getElementById('confirmBtn');
+    let currentPostId = null;
 
-  let currentPostId = null; // 削除対象の投稿IDを保持
+    deleteButtons.forEach(button => {
+      button.addEventListener('click', function () {
+        currentPostId = this.dataset.postId;
+        this.querySelector('.trash-icon').src = "{{ asset('images/trash.png') }}";
+        deleteModal.style.display = 'flex';
+      });
+    });
 
-  deleteButtons.forEach(button => {
-    button.addEventListener('click', function () {
-      const postId = this.dataset.postId;
-      currentPostId = postId;
+    cancelBtn.addEventListener('click', function () {
+      deleteModal.style.display = 'none';
+      currentPostId = null;
+      document.querySelectorAll('.trash-icon').forEach(icon => {
+        icon.src = "{{ asset('images/trash-h.png') }}";
+      });
+    });
 
-      // アイコン変更（視覚的なフィードバック）
-      const icon = this.querySelector('.trash-icon');
-      if (icon) {
-        icon.src = "{{ asset('images/trash.png') }}";
+    confirmBtn.addEventListener('click', function () {
+      if (currentPostId) {
+        deleteForm.action = '/posts/' + currentPostId;
+        deleteForm.submit();
       }
+    });
 
-      // モーダル表示
-      deleteModal.style.display = 'flex';
+    editButtons.forEach(button => {
+      button.addEventListener('click', function () {
+        const postId = this.dataset.postId;
+        const postContent = this.dataset.postContent;
+        editModal.style.display = 'flex';
+        editPostContent.value = postContent;
+        editForm.action = '/posts/' + postId;
+      });
     });
   });
-
-  // キャンセルボタンでモーダル閉じる
-  cancelBtn.addEventListener('click', function () {
-    deleteModal.style.display = 'none';
-    currentPostId = null;
-
-    // アイコンを元に戻す
-    const icons = document.querySelectorAll('.trash-icon');
-    icons.forEach(icon => {
-      icon.src = "{{ asset('images/trash-h.png') }}";
-    });
-  });
-
-  // OKボタン押したら削除フォーム送信
-  confirmBtn.addEventListener('click', function () {
-    if (currentPostId) {
-      deleteForm.action = '/posts/' + currentPostId;
-      deleteForm.submit();
-    }
-  });
-
-  // ===== 編集モーダルの表示 =====
-  editButtons.forEach(button => {
-    button.addEventListener('click', function () {
-      const postId = this.dataset.postId;
-      const postContent = this.dataset.postContent;
-
-      editModal.style.display = 'flex';
-      editPostContent.value = postContent;
-      editForm.action = '/posts/' + postId;
-    });
-  });
-});
 </script>
 
 </x-login-layout>

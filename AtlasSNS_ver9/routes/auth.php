@@ -50,4 +50,5 @@ Route::middleware('auth')->group(function () {
     // プロフィール更新処理（ここが必要！）
     Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
 
+    Route::get('/profile/{id}', [ProfileController::class, 'show'])->name('profile.show');
 });
