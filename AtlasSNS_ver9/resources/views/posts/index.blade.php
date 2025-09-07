@@ -17,7 +17,6 @@
     <div class="post-user">
       <a href="{{ route('profile', ['id' => $post->user->id]) }}">
         <img src="{{ asset('images/' . ($post->user->icon_image ?? 'icon1.png')) }}" alt="アイコン" class="user-icon">
-
       </a>
       <span class="user-name">{{ $post->user->username }}</span>
     </div>
@@ -26,16 +25,18 @@
     <p>{!! nl2br(e($post->post)) !!}</p>
     <small>{{ $post->created_at->format('Y-m-d H:i') }}</small>
 
-    {{-- 編集・削除ボタン --}}
-    <div class="button-area">
-      <button type="button" class="edit-btn" data-post-id="{{ $post->id }}" data-post-content="{{ $post->post }}">
-        <img src="{{ asset('images/edit.png') }}" alt="編集アイコン" class="edit-icon">
-      </button>
+    {{-- 編集・削除ボタン（自分の投稿だけ表示） --}}
+    @if ($post->user_id === Auth::id())
+      <div class="button-area">
+        <button type="button" class="edit-btn" data-post-id="{{ $post->id }}" data-post-content="{{ $post->post }}">
+          <img src="{{ asset('images/edit.png') }}" alt="編集アイコン" class="edit-icon">
+        </button>
 
-      <button type="button" class="delete-btn" data-post-id="{{ $post->id }}">
-        <img src="{{ asset('images/trash-h.png') }}" alt="ゴミ箱アイコン" class="trash-icon">
-      </button>
-    </div>
+        <button type="button" class="delete-btn" data-post-id="{{ $post->id }}">
+          <img src="{{ asset('images/trash-h.png') }}" alt="ゴミ箱アイコン" class="trash-icon">
+        </button>
+      </div>
+    @endif
 
   </div>
 @endforeach
